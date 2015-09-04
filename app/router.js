@@ -6,6 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('rashody');
+  this.route('categories');
 });
 
 export default Router;

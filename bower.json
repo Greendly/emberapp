@@ -11,6 +11,14 @@
     "ember-resolver": "~0.1.18",
     "jquery": "^1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0"
+    "qunit": "~1.18.0",
+    "localforage": "~1.2.1",
+    "jquery-ui": "1.11.4",
+    "moment": "~2.10.6",
+    "moment-timezone": "~0.4.0",
+    "chartjs": "1.0.2"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.5"
   }
 }

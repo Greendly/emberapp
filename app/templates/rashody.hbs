@@ -1,0 +1,88 @@
+<div class="col-xs-8">
+  
+  
+  <div class="btn-group filter_button">
+    <button {{action "setFilterType" "lastDay"}} type="button" class="btn btn-default">День</button>
+    <button {{action "setFilterType" "lastWeek"}} type="button" class="btn btn-default">Неделя</button>
+    <button {{action "setFilterType" "lastMonth"}} type="button" class="btn btn-default">Месяц</button>
+    <button {{action "setFilterType" "All"}} type="button" class="btn btn-default">Все</button>
+  </div>
+  
+  <div class="row filter_group_between">
+    <div class="col-xs-4">
+      <div class="input-group ">
+        <span class="input-group-addon">От</span>
+        {{ jqui-datepicker value=fromDate class="dpnewDate form-control" dateFormat="dd.mm.yy"}} 
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="input-group">
+        <span class="input-group-addon">До</span>
+        {{ jqui-datepicker value=beforeDate class="dpnewDate form-control" dateFormat="dd.mm.yy"}} 
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+      <button {{action "setFilterType" "between"}} type="button" class="btn btn-default">Применить</button>
+    </div>
+  </div> 
+
+  <div class="row">
+    
+    <div class="col-xs-7">
+      <table class="table">
+        {{#each filteredResults as |item| }}
+          <tr>
+            <td>{{formatted-date item.date}}</td>
+            <td>{{item.category.name}}</td>  
+            <td>{{item.count}}</td> 
+            <td><button class="btn btn-default btn-xs" {{action 'remove' this}}>Delete</button></td>
+          </tr>
+        {{/each}}
+      </table>
+    </div>
+    
+    <div class="col-xs-5">
+      {{ember-chart type='Pie' data=filteredResultsForPieChart options=PieChartOptions width=200 height=200}}
+
+      <div class="btn-group filter_button">
+        <button {{action "setChartType" "general"}} type="button" class="btn btn-default">Общий вид</button>
+        <button {{action "setChartType" "details"}} type="button" class="btn btn-default">Детальный вид</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="col-xs-4">
+ 
+  <div class="row new_record">
+    
+    <div class="col-xs-9"> 
+      <h4>Добавить запись:</h4>
+      <div class="input-group"> 
+        <span class="input-group-addon">Дата</span>
+        {{ jqui-datepicker value=newDate class="dpnewDate form-control" dateFormat="dd.mm.yy"}} 
+      </div>   
+
+      {{ view "select"  class="selectpicker form-control"
+        prompt="Выберите категорию"
+        content=model.category
+        selection=selectedCategory
+        optionValuePath='content.id' 
+        optionLabelPath='content.name'
+      }}
+
+      <div class="input-group">
+        <span class="input-group-addon">Ед</span>
+        {{input class="form-control" type="text" value=newCount}}
+      </div> 
+      
+      <button class="add_rec btn btn-default" {{action 'add' this}}>Добавить</button>
+
+    </div> 
+  </div>
+  
+</div>
+  
