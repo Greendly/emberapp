@@ -1,0 +1,27 @@
+body{
+    padding-top: 70px;}
+
+h4{ 
+    color: rgb(102, 102, 102);
+    padding-bottom: 5px;}
+
+nav .active{
+    font-weight: bold;}
+
+.ui-datepicker{
+    z-index: 1030 !important;}
+
+.row{
+    padding-top: 15px;}
+
+.filter_group_between{
+    padding-bottom: 25px;}
+
+.add_rec{ 
+    width: 100%;}
+
+.new_record{
+    padding-top: 45px;}
+
+.new_record div *{
+    margin-bottom: 10px;}
